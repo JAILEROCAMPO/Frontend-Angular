@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit{
         .then((promesa)=>{
           this.respuesta = {resultado: promesa, mensaje: 'Tabla usuarios'}
         })
-    }, 100);
+    }, 1000);
   }
   
 
