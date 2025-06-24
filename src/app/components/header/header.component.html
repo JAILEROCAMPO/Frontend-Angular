@@ -1,0 +1,7 @@
+<div class="sidebar">
+  <p-panelMenu [model]="items" [style]="{ width: '250px' }"></p-panelMenu>
+  <div class="card flex justify-center">
+    <button *ngIf="estalogueado"  style="background-color: red;" (click)="cerrarsesion()" class="p-button p-button-sm mt-3">Cerrar sesión</button>
+  </div>
+
+</div>

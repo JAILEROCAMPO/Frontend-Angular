@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div>
+<form (ngSubmit)="enviardatos()">
+    <p-floatlabel variant="on">
+        <input pInputText  [(ngModel)]="nombre" autocomplete="off" name="nombre" />
+        <label for="on_label">Nombre</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on">
+        <input pInputText  [(ngModel)]="edad" autocomplete="off" name="edad" />
+        <label for="on_label">Edad</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on">
+        <input pInputText  [(ngModel)]="sexo" autocomplete="off" name="sex" />
+        <label for="on_label">Sexo</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on">
+        <input pInputText  [(ngModel)]="altura" autocomplete="off" name="altura"/>
+        <label for="on_label">Altura</label>
+    </p-floatlabel>
+    <p>{{mensaje}}</p>
+    <button pButton type="submit" label="Enviar">Enviar</button> 
+
+</form>
+</div>

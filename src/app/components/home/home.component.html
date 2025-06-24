@@ -1,0 +1,89 @@
+<app-header></app-header>
+<div class="form-container">
+  <form (ngSubmit)="ejecutarAccion()" class="form">
+    <p-select [options]="opciones" [(ngModel)]="opcion" name="opcion" placeholder="Seleccione" (change)="opcioncambiada()" class="w-full md:w-56" />
+    <!-- <p-dropdown 
+      [options]="opciones" 
+      [(ngModel)]="opcion" 
+      name="opcion"
+      placeholder="Seleccione"/> -->
+
+    <p-floatlabel>
+      <input pInputText id="clave" name="clave" [(ngModel)]="clave" />
+      <label for="clave">Clave</label>
+    </p-floatlabel>
+
+    <p-floatlabel>
+      <input pInputText id="valor" name="valor" [(ngModel)]="valor" />
+      <label for="valor">Valor</label>
+    </p-floatlabel>
+
+    <p-floatlabel>
+      <input pInputText id="filtro" name="filtro" [(ngModel)]="filtro" />
+      <label for="filtro">Filtro (opcional)</label>
+    </p-floatlabel>
+
+    <button pButton type="submit" label="Enviar"></button> 
+    <p>{{respuesta?.mensaje}}</p> <p>{{mensaje}}</p>
+  </form>
+
+</div>
+<div  class="tabla">
+  <p-table 
+    [value]="respuesta?.resultado" 
+    styleClass="p-datatable-gridlines" 
+    [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columnas">{{ col }}</th>
+                <th>Opciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row >
+            <tr>
+                <!-- <td *ngFor="let col of columnas"> <input type="text" pInputText [(ngModel)]=row[col] /></td> -->
+                <td *ngFor="let col of columnas">{{ row[col] || 'no lo reconoce' }}</td>
+                <td>
+                    <p-confirmdialog />
+                    <p-button (click)="visible = true; usuario(row)" label="Actualizar" [outlined]="true" />
+                    <p-button (click)="visible2 = true; usuario(row)" label="Eliminar" severity="danger" [outlined]="true" />
+                </td>
+                <!-- <td><button pButton type="button" (click)="visible = true; usuario(row)">Actualizar</button></td>
+                <td><button pButton style="background-color: red;" type="button" (click)="visible2 = true; usuario(row)">Eliminar</button></td> -->
+            </tr>
+        </ng-template>
+  </p-table>
+</div>
+
+<p-dialog header="Actualizar Datos" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary block mb-8">Actualiza los datos</span>
+    <div class="flex items-center gap-4 mb-4">
+        <label  class="font-semibold w-24">Nombre</label>
+        <input pInputText [(ngModel)]="nombre" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex items-center gap-4 mb-8">
+        <label  class="font-semibold w-24">Edad</label>
+        <input pInputText [(ngModel)]="edad" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex items-center gap-4 mb-8">
+        <label  class="font-semibold w-24">Sexo</label>
+        <input pInputText [(ngModel)]="sexo" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex items-center gap-4 mb-8">
+        <label  class="font-semibold w-24">Altura</label>
+        <input pInputText [(ngModel)]="altura" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex justify-end gap-2">
+        <p-button label="Cancel" severity="secondary" (click)="visible = false" ></p-button>
+        <p-button label="Actualizar" (click)="visible = false; actualizar()" ></p-button>
+    </div>
+</p-dialog>
+<p-dialog header="Eliminar Usuario" [modal]="true" [(visible)]="visible2" [style]="{ width: '25rem' }">
+ <span class="p-text-secondary block mb-8">¿Desea eliminar al usuario de {{nombre}}?</span>
+ <div class="flex justify-end gap-2">
+        <p-button label="Cancel" severity="secondary" (click)="visible2 = false" ></p-button>
+        <p-button [style]="{ backgroundColor: 'red' }" label="Eliminar" (click)="visible2 = false; eliminar()" ></p-button>
+    </div>
+</p-dialog>
+<p-toast />
+<!-- <p>{{ personas | json }}</p> -->

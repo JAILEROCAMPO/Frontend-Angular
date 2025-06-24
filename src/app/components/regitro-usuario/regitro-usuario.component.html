@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div>
+    <form (ngSubmit)="enviardatos()">
+        <p-floatlabel variant="on">
+            <input pInputText  [(ngModel)]="correo" autocomplete="off" name="correo" />
+            <label for="on_label">Correo</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on">
+            <input pInputText  [(ngModel)]="contrasena" autocomplete="off" name="contraseña" />
+            <label for="on_label">Contraseña</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on">
+            <input pInputText  [(ngModel)]="nombre" autocomplete="off" name="nombre" />
+            <label for="on_label">Nombre</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on">
+            <input pInputText  [(ngModel)]="documento" autocomplete="off" name="documento">
+            <label for="on_label">Documento</label>
+        </p-floatlabel>
+        <p>{{respuesta}}</p>
+        <button pButton type="submit" label="Enviar">Enviar</button> 
+        <a routerLink="">Iniciar sesion</a>
+    </form>
+</div>

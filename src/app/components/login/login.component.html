@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div>
+    <form (ngSubmit)="enviardatos()">
+        <p-floatlabel variant="on">
+            <input pInputText  [(ngModel)]="correo"  name="correo" />
+            <label for="on_label">Correo</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on">
+            <input pInputText  [(ngModel)]="contrasena"  name="contrasena" />
+            <label for="on_label">Contrasena</label>
+        </p-floatlabel>
+        <p>{{respuesta}}</p>
+        <button pButton type="submit" label="Enviar">Enviar</button> 
+        <a routerLink="/registro-user">Registrarme</a>
+    </form>
+</div>

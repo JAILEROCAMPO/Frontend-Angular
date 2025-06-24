@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  gap: 1rem; /* espacio entre inputs */
+  flex-wrap: wrap; /* para que baje si no hay espacio */
+  align-items: center; /* para que queden alineados verticalmente */
+  margin-top: 30px;
+  padding-left: 300px; 
+}
+
+.tabla{
+  padding-left: 300px;
+}
