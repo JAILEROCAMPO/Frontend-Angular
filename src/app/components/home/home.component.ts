@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit{
       altura: this.altura,
       id: this.id,
       method: 'PUT'
-    },'/actualizar');
+    },'/usuarios/actualizarUsuario');
 
     this.recargartabla();
    /*  this.actua.actualizarDatos({
@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit{
         .then((promesa)=>{
           this.respuesta = {resultado: promesa, mensaje: 'Tabla usuarios'}
         })
-    }, 1000);
+    }, 500);
   }
   
 
