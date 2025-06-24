@@ -11,7 +11,7 @@ export class LoginService {
 
   
   registrar(datos: usuario): Promise<string>{
-    return fetch('https://backend-api-rest.onrender.com/auth/Login',{
+    return fetch('https://backend-api-rest.onrender.com/auth/Registro',{
       method: 'POST',
       headers: {
       'Content-Type': 'application/json'},
