@@ -4,13 +4,12 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { ButtonModule } from 'primeng/button';
-import { HeaderComponent } from "../header/header.component";
 import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-regitro-usuario',
-  imports: [InputTextModule, FloatLabelModule, FormsModule, ButtonModule, HeaderComponent, RouterLink],
+  imports: [InputTextModule, FloatLabelModule, FormsModule, ButtonModule, RouterLink],
   templateUrl: './regitro-usuario.component.html',
   styleUrl: './regitro-usuario.component.scss'
 })

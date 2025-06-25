@@ -3,15 +3,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { HeaderComponent } from "../header/header.component";
 import { Router, RouterLink } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-login',
   imports: [InputTextModule,
   FloatLabelModule, 
   FormsModule, 
-  HeaderComponent,
   RouterLink
 ],
   templateUrl: './login.component.html',
