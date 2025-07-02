@@ -32,11 +32,18 @@ export class SocialComponent implements OnInit {
   cargando: boolean = true;
   chat: boolean = false;
   mensaje: string = '';
+  mensajesAnteriores: any[] = [];
 
   ngOnInit(): void {
     if(this.usuarioId){
       this.servicio.conectar(this.usuarioId);
       console.log('comprobar id', this.usuarioId)
+      this.servicio.recibir((data) => {
+      if(data.tipo === 'mensaje') {
+          this.mensajesAnteriores.push(data);
+          this.mensajesAnteriores = [...this.mensajesAnteriores];
+        }
+      });
     }else{
       console.log('No hay usuario id en localStorage');
     }
@@ -45,7 +52,6 @@ export class SocialComponent implements OnInit {
       .then((respuesta)=>{
         this.usuarios = respuesta.usuarios;
         this.cargando = false;
-        console.log(this.usuarios);
       })
     
   }
@@ -62,16 +68,27 @@ export class SocialComponent implements OnInit {
       console.log('cambio de chat');
     }
     this.chat = true;
+    this.servicio.API({chatId: 1, method: 'POST'}, '/chat/mensajes')
+      .then((respuesta)=>{
+        this.mensajesAnteriores = respuesta;
+        console.log(respuesta);
+      })
   }
   enviarMensaje(){
-    this.servicio.enviar({
-      "tipo": "mensaje",
-      "chatId": 1,
-      "remitenteId": this.usuarioId,
-      "contenido": this.mensaje,
-      "formato": "texto"
-    });
-    console.log(this.mensaje);
+    if(this.mensaje.trim() === '') return;
+
+    const nuevoMensaje = {
+      tipo: "mensaje",
+      chatId: 1,
+      remitenteid: Number(this.usuarioId),
+      contenido: this.mensaje,
+      formato: "texto"
+    };
+    this.servicio.enviar(nuevoMensaje);
+
+    // Actualizar localmente para ver mensaje al instante
+    this.mensajesAnteriores.push(nuevoMensaje);
+    this.mensajesAnteriores = [...this.mensajesAnteriores]; // fuerza detección cambio
     this.mensaje = '';
   }
 }

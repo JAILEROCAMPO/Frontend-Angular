@@ -24,8 +24,9 @@
     
     <div class="mensajes" *ngIf="chat">
         <div class="scroll">
-            <p>Hola</p>
-            <p>¿Cómo estás?</p>
+            <div *ngFor="let items of mensajesAnteriores"  [ngClass]="items.remitenteid.toString() === usuarioId ? 'mensaje-mio' : 'mensaje-otro'">
+                <p>{{ items.contenido }}</p>
+            </div>
         </div>
         <div class="input-container">
             <input type="text" [(ngModel)]="mensaje" placeholder="Escribe un mensaje..." />

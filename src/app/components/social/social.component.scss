@@ -1,3 +1,4 @@
+/* Reseteo básico para ocupar toda la altura */
 html, body {
   height: 100%;
   margin: 0;
@@ -11,7 +12,7 @@ html, body {
 /* Contenedor principal del chat */
 .chatContainer {
   display: flex;
-  height: calc(100vh - 60px); /* Ajusta según la altura real del <app-header> */
+  height: calc(100vh - 60px); /* Ajusta este 60px al alto real de tu <app-header> */
   width: 100%;
   overflow: hidden;
 }
@@ -43,20 +44,20 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Área scrollable para los mensajes */
+/* Área scrollable para los mensajes, ocupa todo el espacio disponible */
 .scroll {
-  flex: 1;
+  flex-grow: 1;
   overflow-y: auto;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
 }
 
-/* Contenedor del input de mensaje */
+/* Contenedor del input de mensaje, fijo abajo */
 .input-container {
   display: flex;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .input-container input {
@@ -75,4 +76,26 @@ html, body {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+/* Estilos para mensajes según remitente */
+
+.mensaje-mio {
+  background-color: #DCF8C6; /* verde claro tipo WhatsApp */
+  text-align: right;
+  padding: 0.5em 1em;
+  border-radius: 12px;
+  margin: 0.3em 0;
+  max-width: 70%;
+  align-self: flex-end;
+}
+
+.mensaje-otro {
+  background-color: #ffffff;
+  text-align: left;
+  padding: 0.5em 1em;
+  border-radius: 12px;
+  margin: 0.3em 0;
+  max-width: 70%;
+  align-self: flex-start;
 }
