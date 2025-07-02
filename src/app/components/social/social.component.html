@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<div class="chatContainer">
+    <div class="lista">
+        <div *ngIf="cargando" class="spinner-wrapper">
+            <p-progressSpinner></p-progressSpinner>
+        </div>
+
+        <p-listbox
+            *ngIf="!cargando"
+            [options]="usuarios"
+            [(ngModel)]="usuarioSeleccionado" name="usuarioSeleccionado"
+            optionLabel="nombre"
+            class="listaUsuarios"
+            (onChange)="seleccionarUsuario($event)">
+            <ng-template let-usuario pTemplate="item">
+                <div class="usuario">
+                    <i class="pi pi-user" style="margin-right: 0.5em;"></i>
+                    <span>{{ usuario.nombre }}</span>
+                </div>
+            </ng-template>
+        </p-listbox>
+    </div>
+    
+    <div class="mensajes" *ngIf="chat">
+        <div class="scroll">
+            <p>Hola</p>
+            <p>¿Cómo estás?</p>
+        </div>
+        <div class="input-container">
+            <input type="text" [(ngModel)]="mensaje" placeholder="Escribe un mensaje..." />
+            <button (click)="enviarMensaje()">Enviar</button>
+        </div>
+    </div>
+</div>
+

@@ -38,6 +38,11 @@ export class HeaderComponent {
           icon: 'pi pi-user-plus',
           routerLink: '/registro'
         },
+        {
+          label: 'Social',
+          icon: 'pi pi-comment',
+          routerLink: '/chat'
+        }
       ]
     
     }

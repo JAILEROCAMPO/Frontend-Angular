@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { error } from 'console';
 import { login, personas, usuario } from '../interfaces/datos';
 
 @Injectable({
@@ -52,6 +51,8 @@ export class LoginService {
       if(mensaje.token){
         console.log('si entra');
         localStorage.setItem('token', mensaje.token);
+        localStorage.setItem('usuarioid', mensaje.usuario.id.toString());
+        console.log(mensaje.usuario.id.toString())
       }
       return mensaje;
     })

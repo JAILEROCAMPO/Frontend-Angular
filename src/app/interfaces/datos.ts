@@ -21,6 +21,7 @@ export interface Respuesta {
   resultado?: string | number | personas[];
 }
 export interface usuario{
+  id?: number
   correo: string,
   contrasena: string,
   nombre: string,

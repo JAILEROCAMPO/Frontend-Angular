@@ -1,0 +1,78 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+/* Contenedor principal del chat */
+.chatContainer {
+  display: flex;
+  height: calc(100vh - 60px); /* Ajusta según la altura real del <app-header> */
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Lista de usuarios (columna izquierda) */
+.lista {
+  width: 30%;
+  max-width: 300px;
+  border-right: 1px solid #ccc;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.listaUsuarios {
+  width: 100%;
+  height: 100%;
+}
+
+/* Columna de mensajes */
+.mensajes {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Área scrollable para los mensajes */
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+/* Contenedor del input de mensaje */
+.input-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.input-container button {
+  padding: 0.5rem 1rem;
+}
+
+/* Spinner centrado */
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
