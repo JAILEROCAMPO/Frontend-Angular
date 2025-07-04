@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class ChatsService {
 
-  private socket: WebSocket = new WebSocket('ws://localhost:4000')
+  private socket: WebSocket = new WebSocket('wss://backend-api-rest.onrender.com')
   private mensajes: ((data: any )=>void)[] = [];
 
-  private URL = 'http://localhost:4000';
+  private URL = 'https://backend-api-rest.onrender.com';
 
   obtenerUsuarios():Promise<any>{
-    return fetch('http://localhost:4000/usuarios/obtener')
+    return fetch('wss://backend-api-rest.onrender.com/usuarios/obtener')
     .then((respuesta: Response)=>{
 
       if(!respuesta.ok){
