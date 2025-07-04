@@ -12,7 +12,7 @@ export class ChatsService {
   private URL = 'https://backend-api-rest.onrender.com';
 
   obtenerUsuarios():Promise<any>{
-    return fetch('wss://backend-api-rest.onrender.com/usuarios/obtener')
+    return fetch('https://backend-api-rest.onrender.com/usuarios/obtener')
     .then((respuesta: Response)=>{
 
       if(!respuesta.ok){
