@@ -33,6 +33,7 @@ export class SocialComponent implements OnInit {
   chat: boolean = false;
   mensaje: string = '';
   mensajesAnteriores: any[] = [];
+  nombrechat = localStorage.getItem('usuario');
 
   ngOnInit(): void {
     if(this.usuarioId){
@@ -68,7 +69,16 @@ export class SocialComponent implements OnInit {
       console.log('cambio de chat');
     }
     this.chat = true;
-    this.servicio.API({chatId: 1, method: 'POST'}, '/chat/mensajes')
+    this.nombrechat += event.value.nombre;
+    const contenido = {
+        nombreChat: this.nombrechat, 
+        esGrupal: false,
+        creadoPor: Number(this.usuarioId), 
+        usuarioid1: Number(this.usuarioId),
+        usuarioid2: event.value.id
+      }
+    
+    this.servicio.API({...contenido, method: 'POST'}, '/chat/iniciarChat')
       .then((respuesta)=>{
         this.mensajesAnteriores = respuesta;
         console.log(respuesta);

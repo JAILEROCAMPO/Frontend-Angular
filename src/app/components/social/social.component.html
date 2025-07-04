@@ -25,7 +25,9 @@
     <div class="mensajes" *ngIf="chat">
         <div class="scroll">
             <div *ngFor="let items of mensajesAnteriores"  [ngClass]="items.remitenteid.toString() === usuarioId ? 'mensaje-mio' : 'mensaje-otro'">
+                <p>{{items?.bienvenida}}</p>
                 <p>{{ items.contenido }}</p>
+
             </div>
         </div>
         <div class="input-container">

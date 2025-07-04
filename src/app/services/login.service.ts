@@ -52,6 +52,7 @@ export class LoginService {
         console.log('si entra');
         localStorage.setItem('token', mensaje.token);
         localStorage.setItem('usuarioid', mensaje.usuario.id.toString());
+        localStorage.setItem('nombre', mensaje.usuario.nombre);
         console.log(mensaje.usuario.id.toString())
       }
       return mensaje;
