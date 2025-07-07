@@ -34,6 +34,7 @@ export class SocialComponent implements OnInit {
   mensaje: string = '';
   mensajesAnteriores: any[] = [];
   nombrechat = localStorage.getItem('usuario');
+  idchat: any = '';
 
   ngOnInit(): void {
     if(this.usuarioId){
@@ -80,7 +81,8 @@ export class SocialComponent implements OnInit {
     
     this.servicio.API({...contenido, method: 'POST'}, '/chat/iniciarChat')
       .then((respuesta)=>{
-        this.mensajesAnteriores = respuesta;
+        this.mensajesAnteriores = respuesta.mensajes;
+        this.idchat = respuesta.idchat;
         console.log(respuesta);
       })
   }
@@ -89,7 +91,7 @@ export class SocialComponent implements OnInit {
 
     const nuevoMensaje = {
       tipo: "mensaje",
-      chatId: 1,
+      chatId: this.idchat,
       remitenteid: Number(this.usuarioId),
       contenido: this.mensaje,
       formato: "texto"
